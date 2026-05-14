@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap");
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: "Poppins", sans-serif;
+
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+
+  background: linear-gradient(
+    135deg,
+    #2b0000,
+    #4d0000,
+    #730000
+  );
+}
+
+/* MAIN CARD */
+.container {
+  width: 430px;
+
+  background: #111111;
+
+  border: 2px solid #d4af37;
+
+  border-radius: 24px;
+
+  padding: 35px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* TITLE */
+h1 {
+  text-align: center;
+
+  margin-bottom: 30px;
+
+  font-family: "Cinzel", serif;
+
+  font-size: 2.8rem;
+
+  line-height: 1.2;
+
+  color: #f5d36a;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+/* SEARCH INPUT */
+.search-bar {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border-radius: 14px;
+
+  border: 2px solid #d4af37;
+
+  background: #1d1d1d;
+
+  color: white;
+
+  font-size: 15px;
+
+  outline: none;
+
+  margin-bottom: 18px;
+}
+
+.search-bar::placeholder {
+  color: #bdbdbd;
+}
+
+/* CHECKBOX */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 24px;
+
+  color: #f3f3f3;
+
+  font-size: 15px;
+
+  font-weight: 500;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+/* TABLE HEADERS */
+th {
+  text-align: left;
+
+  padding-bottom: 12px;
+
+  color: #f5d36a;
+
+  font-size: 18px;
+
+  border-bottom: 2px solid rgba(212, 175, 55, 0.5);
+}
+
+/* TABLE DATA */
+td {
+  padding: 14px 0;
+
+  color: #f1f1f1;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-weight: 500;
+}
+
+/* CATEGORY */
+.category-row td {
+  color: #f5d36a;
+
+  font-size: 19px;
+
+  font-weight: 700;
+
+  padding-top: 22px;
+
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+/* OUT OF STOCK */
+.out-of-stock {
+  color: #ff6b6b;
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+  .container {
+    width: 95%;
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 2.1rem;
+  }
+}
