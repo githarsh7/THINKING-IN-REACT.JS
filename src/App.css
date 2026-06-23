@@ -10,11 +10,11 @@
 /* ── BODY ── */
 body {
   font-family: "Nunito", sans-serif;
-  min-height: 100vh;           /* ✅ was: height: 100vh — caused clipping on tall content */
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;     /* ✅ was: center — caused vertical stretch on desktop */
-  padding: 60px 20px;          /* ✅ was: 40px 20px — more breathing room on desktop */
+  align-items: center;
+  padding: 48px 16px;
   overflow-y: auto;
   background: #0a0a1a;
   background-image:
@@ -66,9 +66,10 @@ body::before {
 .app {
   position: relative;
   z-index: 1;
-  width: 100%;                 /* ✅ added — ensures .app stretches to allow centering */
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* ── CARD ENTRANCE ── */
@@ -81,16 +82,16 @@ body::before {
 
 /* ── MAIN CARD ── */
 .container {
-  width: 90%;                  /* ✅ was: 460px fixed — now fluid */
-  max-width: 560px;            /* ✅ added — caps width on large screens */
+  width: 100%;
+  max-width: 420px;         /* compact sweet-spot for all screens */
   background: #12122a;
   border-radius: 6px;
-  padding: 32px 28px 28px;
+  padding: 24px 22px 22px; /* tighter padding */
   box-shadow:
     0 0 0 3px #ff3c82,
     0 0 0 6px #1a1a3e,
     0 0 40px rgba(255,60,130,0.35),
-    8px 8px 0 #ff3c82;
+    6px 6px 0 #ff3c82;     /* slightly smaller offset shadow */
   position: relative;
   animation: whamIn 0.55s cubic-bezier(0.22,1,0.36,1) both;
 }
@@ -101,17 +102,17 @@ body::before {
   position: absolute;
   top: 0; right: 0;
   border-style: solid;
-  border-width: 0 38px 38px 0;
+  border-width: 0 32px 32px 0;
   border-color: transparent #ff3c82 transparent transparent;
 }
 
 /* ── WHAM IMPACT ── */
 .wham-impact {
   position: absolute;
-  top: -22px; left: 50%;
+  top: -20px; left: 50%;
   transform: translateX(-50%);
   font-family: "Bangers", cursive;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #ffe600;
   letter-spacing: 4px;
   text-shadow: 2px 2px 0 #ff3c82, -1px -1px 0 #000;
@@ -131,9 +132,9 @@ body::before {
   background: rgba(255,60,130,0.1);
   border-left: 3px solid #ff3c82;
   border-radius: 0 6px 6px 0;
-  padding: 8px 12px;
-  margin-bottom: 20px;
-  font-size: 12px;
+  padding: 7px 10px;
+  margin-bottom: 16px;
+  font-size: 11px;
   color: #c8c8e8;
   font-style: italic;
   line-height: 1.5;
@@ -144,21 +145,21 @@ body::before {
   color: #ff8ab8;
   font-style: normal;
   font-weight: 900;
-  font-size: 11px;
-  margin-top: 4px;
+  font-size: 10px;
+  margin-top: 3px;
   letter-spacing: 1px;
 }
 
 /* ── TITLE ── */
 h1 {
   font-family: "Bangers", cursive;
-  font-size: 2.6rem;
+  font-size: 2.1rem;        /* reduced from 2.6rem */
   line-height: 1;
   letter-spacing: 2px;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 16px !important;
+  margin-bottom: 14px !important;
   text-shadow: 3px 3px 0 #ff3c82, 6px 6px 0 rgba(255,60,130,0.25);
   animation: glitch 6s infinite;
 }
@@ -188,10 +189,10 @@ h1 {
 /* ── THEME TOGGLE ── */
 .theme-toggle {
   position: absolute;
-  top: 14px; right: 50px;
+  top: 12px; right: 44px;
   background: none;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: transform 0.3s;
   z-index: 5;
@@ -211,7 +212,7 @@ body.light-mode::before {
 }
 body.light-mode .container {
   background: #fff5fa;
-  box-shadow: 0 0 0 3px #ff3c82, 0 0 0 6px #ffd6e8, 0 0 40px rgba(255,60,130,0.2), 8px 8px 0 #ff3c82;
+  box-shadow: 0 0 0 3px #ff3c82, 0 0 0 6px #ffd6e8, 0 0 40px rgba(255,60,130,0.2), 6px 6px 0 #ff3c82;
 }
 body.light-mode h1 { color: #1a0010; }
 body.light-mode td { color: #2a0020; }
@@ -223,16 +224,16 @@ body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -
 /* ── SEARCH INPUT ── */
 .search-bar {
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: 4px;
   border: 2px solid #ff3c82;
   background: #0d0d22;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
   outline: none;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   display: block;
   transition: box-shadow 0.2s;
 }
@@ -243,16 +244,16 @@ body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -
 .checkbox-container {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 22px;
+  gap: 8px;
+  margin-bottom: 18px;
   color: #c8c8e8;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 .checkbox-container input[type="checkbox"] {
   accent-color: #ff3c82;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
 }
 
@@ -262,9 +263,9 @@ table { width: 100%; border-collapse: collapse; }
 /* ── TABLE HEADERS ── */
 th {
   text-align: left;
-  padding: 0 0 10px;
+  padding: 0 0 8px;
   color: #ff3c82;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -273,11 +274,11 @@ th {
 
 /* ── TABLE DATA ── */
 td {
-  padding: 12px 0;
+  padding: 10px 0;
   color: #e0e0ff;
   border-bottom: 1px solid rgba(255,255,255,0.07);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   transition: color 0.2s;
 }
 
@@ -303,10 +304,10 @@ td {
 .category-row th {
   background: linear-gradient(90deg, rgba(255,60,130,0.18), transparent);
   border-left: 3px solid #ff3c82;
-  padding: 6px 10px 6px 8px;
+  padding: 5px 10px 5px 8px;
   border-radius: 0 4px 4px 0;
   font-family: "Bangers", cursive;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 2px;
   color: #ff3c82;
   text-transform: uppercase;
@@ -328,9 +329,9 @@ td {
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 1.5px;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 3px;
-  margin-left: 8px;
+  margin-left: 6px;
   vertical-align: middle;
   font-family: "Nunito", sans-serif;
 }
@@ -342,16 +343,16 @@ td {
   gap: 6px;
 }
 .power-bar {
-  height: 5px;
+  height: 4px;
   border-radius: 3px;
   background: linear-gradient(90deg, #ff3c82, #ffe600);
   min-width: 10px;
-  max-width: 70px;
+  max-width: 60px;
   box-shadow: 0 0 6px rgba(255,60,130,0.5);
 }
 .power-label {
   font-family: "Bangers", cursive;
-  font-size: 13px;
+  font-size: 12px;
   color: #ff8ab8;
   letter-spacing: 1px;
 }
@@ -359,45 +360,25 @@ td {
 /* ── EMPTY STATE ── */
 .empty-state {
   text-align: center;
-  padding: 28px 0 8px;
+  padding: 22px 0 6px;
   color: #6a6a9a;
 }
-.empty-state .chibi { font-size: 2.5rem; display: block; margin-bottom: 6px; }
-.empty-state p { font-size: 13px; color: #6a6a9a; }
-.empty-state strong { display: block; font-family: "Bangers", cursive; font-size: 1.4rem; color: #ff3c82; letter-spacing: 2px; margin-bottom: 4px; }
+.empty-state .chibi { font-size: 2.2rem; display: block; margin-bottom: 5px; }
+.empty-state p { font-size: 12px; color: #6a6a9a; }
+.empty-state strong { display: block; font-family: "Bangers", cursive; font-size: 1.3rem; color: #ff3c82; letter-spacing: 2px; margin-bottom: 4px; }
 
-/* ── DESKTOP LARGE (1200px+) ── */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 620px;          /* ✅ slightly wider on very large screens */
-    padding: 36px 32px 32px;
-  }
-  h1 { font-size: 3rem; }
-}
-
-/* ── TABLET (501px – 900px) ── */
-@media (min-width: 501px) and (max-width: 900px) {
+/* ── MOBILE (≤480px) ── */
+@media (max-width: 480px) {
   body {
-    padding: 50px 24px;
+    padding: 36px 12px;
+    align-items: center;
   }
   .container {
-    width: 85%;
-    max-width: 540px;
+    max-width: 100%;
+    padding: 20px 14px 18px;
   }
-}
-
-/* ── MOBILE (≤500px) ── */
-@media (max-width: 500px) {
-  body {
-    min-height: 100vh;
-    align-items: flex-start;
-    padding: 40px 16px;
-  }
-  .container {
-    width: 95%;
-    padding: 20px 16px;
-  }
-  h1 { font-size: 2rem; }
+  h1 { font-size: 1.8rem; }
+  .wham-impact { font-size: 1.4rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
