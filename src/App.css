@@ -10,11 +10,12 @@
 /* ── BODY ── */
 body {
   font-family: "Nunito", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 60px 40px 60px;
+  align-items: center;
+  padding: 40px 20px;
+  overflow-y: auto;
   background: #0a0a1a;
   background-image:
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,60,130,0.18) 0%, transparent 70%),
@@ -363,6 +364,12 @@ td {
 
 /* ── MOBILE ── */
 @media (max-width: 500px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+    padding: 40px 16px;
+  }
   .container { width: 95%; padding: 20px 16px; }
   h1 { font-size: 2rem; }
 }
