@@ -13,15 +13,15 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px;
+  align-items: flex-start;
+  padding: 60px 40px 60px;
   background: #0a0a1a;
   background-image:
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,60,130,0.18) 0%, transparent 70%),
     repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,255,255,0.025) 38px, rgba(255,255,255,0.025) 40px),
     repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,0.025) 38px, rgba(255,255,255,0.025) 40px);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Speed-line burst */
