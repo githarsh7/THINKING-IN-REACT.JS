@@ -10,11 +10,11 @@
 /* ── BODY ── */
 body {
   font-family: "Nunito", sans-serif;
-  height: 100vh;
+  min-height: 100vh;           /* ✅ was: height: 100vh — caused clipping on tall content */
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
+  align-items: flex-start;     /* ✅ was: center — caused vertical stretch on desktop */
+  padding: 60px 20px;          /* ✅ was: 40px 20px — more breathing room on desktop */
   overflow-y: auto;
   background: #0a0a1a;
   background-image:
@@ -66,6 +66,9 @@ body::before {
 .app {
   position: relative;
   z-index: 1;
+  width: 100%;                 /* ✅ added — ensures .app stretches to allow centering */
+  display: flex;
+  justify-content: center;
 }
 
 /* ── CARD ENTRANCE ── */
@@ -78,7 +81,8 @@ body::before {
 
 /* ── MAIN CARD ── */
 .container {
-  width: 460px;
+  width: 90%;                  /* ✅ was: 460px fixed — now fluid */
+  max-width: 560px;            /* ✅ added — caps width on large screens */
   background: #12122a;
   border-radius: 6px;
   padding: 32px 28px 28px;
@@ -362,15 +366,37 @@ td {
 .empty-state p { font-size: 13px; color: #6a6a9a; }
 .empty-state strong { display: block; font-family: "Bangers", cursive; font-size: 1.4rem; color: #ff3c82; letter-spacing: 2px; margin-bottom: 4px; }
 
-/* ── MOBILE ── */
+/* ── DESKTOP LARGE (1200px+) ── */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 620px;          /* ✅ slightly wider on very large screens */
+    padding: 36px 32px 32px;
+  }
+  h1 { font-size: 3rem; }
+}
+
+/* ── TABLET (501px – 900px) ── */
+@media (min-width: 501px) and (max-width: 900px) {
+  body {
+    padding: 50px 24px;
+  }
+  .container {
+    width: 85%;
+    max-width: 540px;
+  }
+}
+
+/* ── MOBILE (≤500px) ── */
 @media (max-width: 500px) {
   body {
-    height: auto;
     min-height: 100vh;
-    align-items: center;
+    align-items: flex-start;
     padding: 40px 16px;
   }
-  .container { width: 95%; padding: 20px 16px; }
+  .container {
+    width: 95%;
+    padding: 20px 16px;
+  }
   h1 { font-size: 2rem; }
 }
 
