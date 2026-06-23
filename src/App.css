@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;900&display=swap");
 
 /* ── RESET ── */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,22 +17,11 @@ body {
   padding: 40px;
   background: #0a0a1a;
   background-image:
-    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 60, 130, 0.18) 0%, transparent 70%),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 38px,
-      rgba(255, 255, 255, 0.025) 38px,
-      rgba(255, 255, 255, 0.025) 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 38px,
-      rgba(255, 255, 255, 0.025) 38px,
-      rgba(255, 255, 255, 0.025) 40px
-    );
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,60,130,0.18) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,255,255,0.025) 38px, rgba(255,255,255,0.025) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,255,255,0.025) 38px, rgba(255,255,255,0.025) 40px);
   position: relative;
+  overflow: hidden;
 }
 
 /* Speed-line burst */
@@ -42,13 +29,36 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: repeating-conic-gradient(
-    from 0deg at 50% 50%,
-    rgba(255, 60, 130, 0.04) 0deg 2deg,
-    transparent 2deg 6deg
-  );
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,60,130,0.04) 0deg 2deg, transparent 2deg 6deg);
   pointer-events: none;
   z-index: 0;
+}
+
+/* ── SAKURA PETALS ── */
+.sakura-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(ellipse at 40% 35%, #ffb6d9, #ff3c82);
+  border-radius: 0 100% 0 100%;
+  opacity: 0;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0; }
+  5%   { opacity: 0.85; }
+  90%  { opacity: 0.7; }
+  100% { transform: translateY(110vh) rotate(540deg) scale(0.6); opacity: 0; }
 }
 
 /* ── APP WRAPPER ── */
@@ -57,47 +67,153 @@ body::before {
   z-index: 1;
 }
 
+/* ── CARD ENTRANCE ── */
+@keyframes whamIn {
+  0%   { transform: scale(0.5) rotate(-4deg); opacity: 0; }
+  60%  { transform: scale(1.06) rotate(1deg); opacity: 1; }
+  80%  { transform: scale(0.97) rotate(-0.5deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
 /* ── MAIN CARD ── */
 .container {
-  width: 440px;
+  width: 460px;
   background: #12122a;
   border-radius: 6px;
   padding: 32px 28px 28px;
   box-shadow:
     0 0 0 3px #ff3c82,
     0 0 0 6px #1a1a3e,
-    0 0 40px rgba(255, 60, 130, 0.35),
+    0 0 40px rgba(255,60,130,0.35),
     8px 8px 0 #ff3c82;
   position: relative;
+  animation: whamIn 0.55s cubic-bezier(0.22,1,0.36,1) both;
 }
 
 /* Manga corner fold */
 .container::after {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
+  top: 0; right: 0;
   border-style: solid;
-  border-width: 0 36px 36px 0;
+  border-width: 0 38px 38px 0;
   border-color: transparent #ff3c82 transparent transparent;
+}
+
+/* ── WHAM IMPACT ── */
+.wham-impact {
+  position: absolute;
+  top: -22px; left: 50%;
+  transform: translateX(-50%);
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  color: #ffe600;
+  letter-spacing: 4px;
+  text-shadow: 2px 2px 0 #ff3c82, -1px -1px 0 #000;
+  animation: whamPop 0.6s cubic-bezier(0.22,1,0.36,1) both;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+@keyframes whamPop {
+  0%   { transform: translateX(-50%) scale(0) rotate(-8deg); opacity: 0; }
+  70%  { transform: translateX(-50%) scale(1.15) rotate(3deg); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ── QUOTE BANNER ── */
+.anime-quote {
+  background: rgba(255,60,130,0.1);
+  border-left: 3px solid #ff3c82;
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #c8c8e8;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.anime-quote span {
+  display: block;
+  color: #ff8ab8;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 11px;
+  margin-top: 4px;
+  letter-spacing: 1px;
 }
 
 /* ── TITLE ── */
 h1 {
   font-family: "Bangers", cursive;
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   line-height: 1;
   letter-spacing: 2px;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 22px !important;
-  text-shadow:
-    3px 3px 0 #ff3c82,
-    6px 6px 0 rgba(255, 60, 130, 0.25);
+  margin-bottom: 16px !important;
+  text-shadow: 3px 3px 0 #ff3c82, 6px 6px 0 rgba(255,60,130,0.25);
+  animation: glitch 6s infinite;
 }
+
+@keyframes glitch {
+  0%, 94%, 100% {
+    text-shadow: 3px 3px 0 #ff3c82, 6px 6px 0 rgba(255,60,130,0.25);
+    clip-path: none;
+  }
+  95% {
+    text-shadow: -3px 0 #00ffff, 3px 0 #ff3c82;
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    transform: translate(-2px, 0);
+  }
+  96% {
+    text-shadow: 3px 0 #ff3c82, -3px 0 #00ffff;
+    clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+    transform: translate(2px, 0);
+  }
+  97% {
+    text-shadow: 3px 3px 0 #ff3c82, 6px 6px 0 rgba(255,60,130,0.25);
+    clip-path: none;
+    transform: translate(0, 0);
+  }
+}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  position: absolute;
+  top: 14px; right: 50px;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 5;
+}
+.theme-toggle:hover { transform: scale(1.2) rotate(20deg); }
+
+/* ── LIGHT MODE ── */
+body.light-mode {
+  background: #fff0f6;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,60,130,0.12) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(255,60,130,0.07) 38px, rgba(255,60,130,0.07) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(255,60,130,0.07) 38px, rgba(255,60,130,0.07) 40px);
+}
+body.light-mode::before {
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,60,130,0.06) 0deg 2deg, transparent 2deg 6deg);
+}
+body.light-mode .container {
+  background: #fff5fa;
+  box-shadow: 0 0 0 3px #ff3c82, 0 0 0 6px #ffd6e8, 0 0 40px rgba(255,60,130,0.2), 8px 8px 0 #ff3c82;
+}
+body.light-mode h1 { color: #1a0010; }
+body.light-mode td { color: #2a0020; }
+body.light-mode .anime-quote { color: #5a2040; }
+body.light-mode .search-bar { background: #fff0f6; color: #1a0010; }
+body.light-mode .checkbox-container { color: #3a0028; }
+body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -1px -1px 0 #fff; }
 
 /* ── SEARCH INPUT ── */
 .search-bar {
@@ -112,17 +228,11 @@ h1 {
   font-weight: 600;
   outline: none;
   margin-bottom: 14px;
-  transition: box-shadow 0.2s;
   display: block;
+  transition: box-shadow 0.2s;
 }
-
-.search-bar:focus {
-  box-shadow: 0 0 0 3px rgba(255, 60, 130, 0.35);
-}
-
-.search-bar::placeholder {
-  color: #6a6a9a;
-}
+.search-bar:focus { box-shadow: 0 0 0 3px rgba(255,60,130,0.35); }
+.search-bar::placeholder { color: #6a6a9a; }
 
 /* ── CHECKBOX ── */
 .checkbox-container {
@@ -134,7 +244,6 @@ h1 {
   font-size: 14px;
   font-weight: 700;
 }
-
 .checkbox-container input[type="checkbox"] {
   accent-color: #ff3c82;
   width: 16px;
@@ -143,12 +252,9 @@ h1 {
 }
 
 /* ── TABLE ── */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+table { width: 100%; border-collapse: collapse; }
 
-/* ── TABLE HEADERS (Product / Price columns) ── */
+/* ── TABLE HEADERS ── */
 th {
   text-align: left;
   padding: 0 0 10px;
@@ -164,14 +270,33 @@ th {
 td {
   padding: 12px 0;
   color: #e0e0ff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
   font-weight: 600;
   font-size: 14px;
+  transition: color 0.2s;
 }
+
+/* ── PRODUCT ROW HOVER ── */
+.product-row {
+  position: relative;
+  cursor: default;
+  transition: background 0.2s;
+}
+.product-row::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 100%;
+  background: linear-gradient(90deg, rgba(255,60,130,0.12), transparent);
+  transition: width 0.25s ease;
+  pointer-events: none;
+}
+.product-row:hover::after { width: 100%; }
+.product-row:hover td { color: #ffffff; }
 
 /* ── CATEGORY ROW ── */
 .category-row th {
-  background: linear-gradient(90deg, rgba(255, 60, 130, 0.18), transparent);
+  background: linear-gradient(90deg, rgba(255,60,130,0.18), transparent);
   border-left: 3px solid #ff3c82;
   padding: 6px 10px 6px 8px;
   border-radius: 0 4px 4px 0;
@@ -180,25 +305,68 @@ td {
   letter-spacing: 2px;
   color: #ff3c82;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(255, 60, 130, 0.4);
-  margin-top: 8px;
+  border-bottom: 1px solid rgba(255,60,130,0.4);
 }
 
 /* ── OUT OF STOCK ── */
 .red {
   color: #ff4d6a;
-  font-style: italic;
-  opacity: 0.85;
+  text-decoration: line-through;
+  opacity: 0.75;
 }
+
+/* ── SOLD OUT BADGE ── */
+.sold-out-badge {
+  display: inline-block;
+  background: #ff4d6a;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  vertical-align: middle;
+  font-family: "Nunito", sans-serif;
+}
+
+/* ── POWER BAR ── */
+.power-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.power-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ff3c82, #ffe600);
+  min-width: 10px;
+  max-width: 70px;
+  box-shadow: 0 0 6px rgba(255,60,130,0.5);
+}
+.power-label {
+  font-family: "Bangers", cursive;
+  font-size: 13px;
+  color: #ff8ab8;
+  letter-spacing: 1px;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 28px 0 8px;
+  color: #6a6a9a;
+}
+.empty-state .chibi { font-size: 2.5rem; display: block; margin-bottom: 6px; }
+.empty-state p { font-size: 13px; color: #6a6a9a; }
+.empty-state strong { display: block; font-family: "Bangers", cursive; font-size: 1.4rem; color: #ff3c82; letter-spacing: 2px; margin-bottom: 4px; }
 
 /* ── MOBILE ── */
 @media (max-width: 500px) {
-  .container {
-    width: 95%;
-    padding: 20px 16px;
-  }
+  .container { width: 95%; padding: 20px 16px; }
+  h1 { font-size: 2rem; }
+}
 
-  h1 {
-    font-size: 2rem;
-  }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
