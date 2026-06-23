@@ -1,20 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;900&display=swap");
 
-/* RESET */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   min-height: 100svh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 24px 16px 20px;
+  align-items: center;
+  padding: clamp(16px, 3vw, 40px);
   overflow-x: hidden;
   overflow-y: auto;
   background: #0a0a1a;
@@ -34,7 +37,6 @@ body::before {
   z-index: 0;
 }
 
-/* SAKURA PETALS */
 .sakura-container {
   position: fixed;
   inset: 0;
@@ -61,17 +63,16 @@ body::before {
   100% { transform: translateY(110vh) rotate(540deg) scale(0.6); opacity: 0; }
 }
 
-/* APP */
 .app {
   position: relative;
   z-index: 1;
   width: 100%;
+  min-height: 100svh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
-/* ANIMATIONS */
 @keyframes whamIn {
   0% { transform: scale(0.5) rotate(-4deg); opacity: 0; }
   60% { transform: scale(1.06) rotate(1deg); opacity: 1; }
@@ -108,7 +109,6 @@ body::before {
   }
 }
 
-/* CARD */
 .container {
   width: min(100%, 420px);
   background: #12122a;
@@ -133,7 +133,6 @@ body::before {
   border-color: transparent #ff3c82 transparent transparent;
 }
 
-/* WHAM */
 .wham-impact {
   position: absolute;
   top: -18px;
@@ -149,7 +148,6 @@ body::before {
   z-index: 10;
 }
 
-/* QUOTE */
 .anime-quote {
   background: rgba(255,60,130,0.1);
   border-left: 3px solid #ff3c82;
@@ -172,10 +170,9 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* TITLE */
 h1 {
   font-family: "Bangers", cursive;
-  font-size: clamp(1.75rem, 4.8vw, 2.4rem);
+  font-size: clamp(1.65rem, 4.8vw, 2.4rem);
   line-height: 1;
   letter-spacing: 2px;
   color: #ffffff;
@@ -186,7 +183,6 @@ h1 {
   animation: glitch 6s infinite;
 }
 
-/* THEME TOGGLE */
 .theme-toggle {
   position: absolute;
   top: 12px;
@@ -200,7 +196,6 @@ h1 {
 }
 .theme-toggle:hover { transform: scale(1.2) rotate(20deg); }
 
-/* LIGHT MODE */
 body.light-mode {
   background: #fff0f6;
   background-image:
@@ -222,7 +217,6 @@ body.light-mode .search-bar { background: #fff0f6; color: #1a0010; }
 body.light-mode .checkbox-container { color: #3a0028; }
 body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -1px -1px 0 #fff; }
 
-/* SEARCH */
 .search-bar {
   width: 100%;
   padding: 10px 14px;
@@ -243,7 +237,6 @@ body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -
 }
 .search-bar::placeholder { color: #6a6a9a; }
 
-/* CHECKBOX */
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -262,7 +255,6 @@ body.light-mode .wham-impact { color: #ff3c82; text-shadow: 2px 2px 0 #ffe600, -
   flex-shrink: 0;
 }
 
-/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -320,7 +312,6 @@ td {
   border-bottom: 1px solid rgba(255,60,130,0.4);
 }
 
-/* STATES */
 .red {
   color: #ff4d6a;
   text-decoration: line-through;
@@ -347,7 +338,6 @@ td {
   gap: 6px;
   flex-wrap: wrap;
 }
-
 .power-bar {
   height: 4px;
   border-radius: 3px;
@@ -356,7 +346,6 @@ td {
   max-width: 60px;
   box-shadow: 0 0 6px rgba(255,60,130,0.5);
 }
-
 .power-label {
   font-family: "Bangers", cursive;
   font-size: 12px;
@@ -364,7 +353,6 @@ td {
   letter-spacing: 1px;
 }
 
-/* EMPTY */
 .empty-state {
   text-align: center;
   padding: 18px 0 4px;
@@ -388,12 +376,7 @@ td {
   margin-bottom: 4px;
 }
 
-/* TABLET */
 @media (max-width: 768px) {
-  body {
-    padding: 20px 14px 18px;
-  }
-
   .container {
     width: min(100%, 560px);
     padding: 20px 16px 18px;
@@ -408,16 +391,14 @@ td {
   }
 }
 
-/* MOBILE */
 @media (max-width: 480px) {
   body {
-    min-height: 100svh;
-    padding: 14px 12px 14px;
-    align-items: flex-start;
+    padding: 14px 12px;
   }
 
   .app {
-    align-items: flex-start;
+    align-items: center;
+    min-height: 100svh;
   }
 
   .container {
@@ -434,7 +415,7 @@ td {
   }
 
   h1 {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     margin-bottom: 10px !important;
   }
 
@@ -488,10 +469,9 @@ td {
   }
 }
 
-/* SMALL MOBILE */
 @media (max-width: 360px) {
   body {
-    padding: 12px 10px 12px;
+    padding: 12px 10px;
   }
 
   .container {
@@ -499,7 +479,7 @@ td {
   }
 
   h1 {
-    font-size: 1.45rem;
+    font-size: 1.42rem;
   }
 
   .wham-impact {
@@ -516,7 +496,6 @@ td {
   }
 }
 
-/* REDUCED MOTION */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
